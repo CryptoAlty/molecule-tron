@@ -1,0 +1,14 @@
+services:
+  fullnode:
+    image: openjdk:8-jdk
+    container_name: fullnode
+    ports:
+      - "8090:8090"
+      - "18888:18888"
+    volumes:
+      - ./data/fullnode/config.conf:/java-tron/config.conf
+      - ../java-tron/build/libs/FullNode.jar:/java-tron/FullNode.jar
+    working_dir: /java-tron
+    entrypoint: ["java", "-jar", "FullNode.jar", "-c", 
+"/java-tron/config.conf"]
+
